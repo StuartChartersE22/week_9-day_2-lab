@@ -63,6 +63,42 @@ public class ManagersController {
             return null;
         }, new VelocityTemplateEngine());
 
+        get("/managers/:id/edit", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int managerId = Integer.parseInt(req.params(":id"));
+            Manager selectedManager = DBHelper.find(managerId, Manager.class);
+            List<Department> departments = DBHelper.getAll(Department.class);
+            model.put("departments", departments);
+            model.put("manager", selectedManager);
+            model.put("template", "templates/managers/edit.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        post("/managers/:id/update", (req,res) -> {
+            //get the departments id
+            int departmentId = Integer.parseInt(req.queryParams("department"));
+            //find the department by that id
+            Department department = DBHelper.find(departmentId,Department.class);
+            //get first name from request
+            String firstName = req.queryParams("first_name");
+            //get last name from request
+            String lastName = req.queryParams("last_name");
+            //get salary from request
+            int salary = Integer.parseInt(req.queryParams("salary"));
+            //get budget from request
+            double budget = Double.parseDouble(req.queryParams("budget"));
+
+            //use all these to create a new manager
+            Manager manager = new Manager(firstName, lastName, salary, department, budget);
+            int managerId = Integer.parseInt(req.params(":id"));
+            manager.setId(managerId);
+            //save it using the DB Helper
+            DBHelper.save(manager);
+            //do a redirect away from the page to the same page
+            res.redirect("/managers");
+            return null;
+        }, new VelocityTemplateEngine());
+
     }
 
 
