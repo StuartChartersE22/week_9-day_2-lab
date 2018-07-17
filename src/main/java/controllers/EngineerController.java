@@ -58,6 +58,40 @@ public class EngineerController {
             return null;
         }, new VelocityTemplateEngine());
 
+        get("/engineers/:id/edit", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int engineerId = Integer.parseInt(req.params(":id"));
+            Engineer selectedEngineer = DBHelper.find(engineerId, Engineer.class);
+            List<Department> departments = DBHelper.getAll(Department.class);
+            model.put("departments", departments);
+            model.put("engineer", selectedEngineer);
+            model.put("template", "templates/engineers/edit.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        post("/engineers/:id/update", (req,res) -> {
+            //get the departments id
+            int departmentId = Integer.parseInt(req.queryParams("department"));
+            //find the department by that id
+            Department department = DBHelper.find(departmentId,Department.class);
+            //get first name from request
+            String firstName = req.queryParams("first_name");
+            //get last name from request
+            String lastName = req.queryParams("last_name");
+            //get salary from request
+            int salary = Integer.parseInt(req.queryParams("salary"));
+
+            //use all these to create a new engineer
+            Engineer engineer = new Engineer(firstName, lastName, salary, department);
+            int engineerId = Integer.parseInt(req.params(":id"));
+            engineer.setId(engineerId);
+            //save it using the DB Helper
+            DBHelper.save(engineer);
+            //do a redirect away from the page to the same page
+            res.redirect("/engineers");
+            return null;
+        }, new VelocityTemplateEngine());
+
 
     }
 
