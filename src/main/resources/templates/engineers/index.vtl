@@ -16,9 +16,9 @@
             <td>$engineer.getDepartment().getTitle()</td>
             <td>$engineer.getSalary()</td>
             <td><a href="/engineers/$engineer.getId()/edit">Edit</a></td>
-            <!--<td><form action="/managers/$manager.getId()/delete" method="post">-->
-                <!--<input type="submit" value="Delete">-->
-            <!--</form></td>-->
+            <td><form action="/engineers/$engineer.getId()/delete" method="post">
+                <input type="submit" value="Delete">
+            </form></td>
 
         </tr>
         #end
