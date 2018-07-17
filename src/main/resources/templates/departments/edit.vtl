@@ -1,0 +1,10 @@
+<h1>Edit $department.getTitle()</h1>
+
+<form action="/departments/$department.getId()/update" method="post">
+
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" required="true" value="$department.getTitle()">
+
+    <input type="submit" value="Update">
+
+</form>

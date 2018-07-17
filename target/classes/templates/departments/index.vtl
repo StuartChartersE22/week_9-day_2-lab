@@ -7,11 +7,12 @@
     #foreach ($department in $departments)
     <tr>
         <td> $department.getTitle()</td>
+        <td><a href="/departments/$department.getId()/edit">Edit</a></td>
     </tr>
-    
+
     #end
 
-
+<a href = "/departments/new" > Create new department </a>
 
 
 </table>
