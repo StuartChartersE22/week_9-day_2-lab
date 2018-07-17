@@ -1,11 +1,13 @@
 package models;
 
+import behaviours.IDB;
+
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name="departments")
-public class Department {
+public class Department implements IDB {
 
 
     private int id;

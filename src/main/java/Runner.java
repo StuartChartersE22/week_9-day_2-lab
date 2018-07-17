@@ -1,4 +1,8 @@
 import db.DBHelper;
+import db.helpers.DBDepartment;
+import db.helpers.DBEmployee;
+import db.helpers.DBEngineer;
+import db.helpers.DBManager;
 import models.Department;
 import models.Employee;
 import models.Engineer;
@@ -7,10 +11,10 @@ import models.Manager;
 public class Runner {
 
     public static void main(String[] args) {
-        DBHelper.deleteAll(Engineer.class);
-        DBHelper.deleteAll(Employee.class);
-        DBHelper.deleteAll(Manager.class);
-        DBHelper.deleteAll(Department.class);
+        DBEngineer.deleteAll();
+        DBEmployee.deleteAll();
+        DBManager.deleteAll();
+        DBDepartment.deleteAll();
 
 
         Department department1 = new Department("HR");
@@ -24,7 +28,7 @@ public class Runner {
         Engineer engineer2 = new Engineer("Stewie", "Griffin", 27000, department1);
         DBHelper.save(engineer2);
 
-        Engineer found = DBHelper.find(engineer1.getId(), Engineer.class);
-        Manager foundManager = DBHelper.findManagerForDept(department1);
+        Engineer found = DBEngineer.find(engineer1.getId());
+        Manager foundManager = DBDepartment.getManagerForDepartment(department1).get(0);
     }
 }

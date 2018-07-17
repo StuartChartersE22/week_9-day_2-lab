@@ -1,6 +1,8 @@
 package controllers;
 
 import db.DBHelper;
+import db.helpers.DBDepartment;
+import db.helpers.DBManager;
 import models.Department;
 import models.Manager;
 import org.dom4j.rule.Mode;
@@ -26,14 +28,14 @@ public class ManagersController {
             Map<String, Object> model = new HashMap<>();
             model.put("template", "templates/managers/index.vtl");
 
-            List<Manager> managers = DBHelper.getAll(Manager.class);
+            List<Manager> managers = DBManager.getAll();
             model.put("managers", managers);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
         get("/managers/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            List<Department> departments = DBHelper.getAll(Department.class);
+            List<Department> departments = DBDepartment.getAll();
             model.put("departments", departments);
             model.put("template", "templates/managers/create.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
@@ -44,7 +46,7 @@ public class ManagersController {
             //get the departments id
             int departmentId = Integer.parseInt(req.queryParams("department"));
             //find the department by that id
-            Department department = DBHelper.find(departmentId,Department.class);
+            Department department = DBDepartment.find(departmentId);
             //get first name from request
             String firstName = req.queryParams("first_name");
             //get last name from request
@@ -66,8 +68,8 @@ public class ManagersController {
         get("/managers/:id/edit", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             int managerId = Integer.parseInt(req.params(":id"));
-            Manager selectedManager = DBHelper.find(managerId, Manager.class);
-            List<Department> departments = DBHelper.getAll(Department.class);
+            Manager selectedManager = DBManager.find(managerId);
+            List<Department> departments = DBDepartment.getAll();
             model.put("departments", departments);
             model.put("manager", selectedManager);
             model.put("template", "templates/managers/edit.vtl");
@@ -78,7 +80,7 @@ public class ManagersController {
             //get the departments id
             int departmentId = Integer.parseInt(req.queryParams("department"));
             //find the department by that id
-            Department department = DBHelper.find(departmentId,Department.class);
+            Department department = DBDepartment.find(departmentId);
             //get first name from request
             String firstName = req.queryParams("first_name");
             //get last name from request
@@ -101,7 +103,7 @@ public class ManagersController {
 
         post("/managers/:id/delete", (req,res) -> {
             int managerId = Integer.parseInt(req.params(":id"));
-            Manager selectedManager = DBHelper.find(managerId, Manager.class);
+            Manager selectedManager = DBManager.find(managerId);
             DBHelper.delete(selectedManager);
             res.redirect("/managers");
             return null;

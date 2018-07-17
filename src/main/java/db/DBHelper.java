@@ -1,24 +1,29 @@
 package db;
 
-import models.Department;
-import models.Manager;
-import org.hibernate.*;
+import behaviours.IDB;
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
 
 public class DBHelper {
 
-    private static Transaction transaction;
     private static Session session;
+    private static Transaction transaction;
 
-    public static void save(Object object) {
+    public static void save(Object object){
         session = HibernateUtil.getSessionFactory().openSession();
-        try {
+
+        try{
             transaction = session.beginTransaction();
             session.saveOrUpdate(object);
             transaction.commit();
-        } catch (HibernateException e) {
+        } catch (Throwable e) {
             transaction.rollback();
             e.printStackTrace();
         } finally {
@@ -26,89 +31,137 @@ public class DBHelper {
         }
     }
 
-    public static <T> List<T> getList(Criteria criteria) {
-        List<T> results = null;
+    public static void update(Object object){
+        session = HibernateUtil.getSessionFactory().openSession();
+
+        try{transaction = session.beginTransaction();
+            session.update(object);
+            transaction.commit();
+        } catch (Throwable e) {
+            transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+    public static void delete (Object object){
+        session = HibernateUtil.getSessionFactory().openSession();
+
+        try{
+            transaction = session.beginTransaction();
+            session.delete(object);
+            transaction.commit();
+        } catch (Throwable e) {
+            transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+    protected static <T> void deleteAll(Class<T> searchingClass){
+        List<T> allItems = getAll(searchingClass);
+        session = HibernateUtil.getSessionFactory().openSession();
         try {
             transaction = session.beginTransaction();
-            results = criteria.list();
-            ;
+            for(T item : allItems){
+                session.delete(item);
+            }
             transaction.commit();
-        } catch (HibernateException ex) {
+        } catch (Throwable e) {
             transaction.rollback();
-            ex.printStackTrace();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+    protected static <T extends Object> List<T> getAll(Class<T> searchingClass){
+        List<T> results = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            Criteria cr = session.createCriteria(searchingClass);
+            results = cr.list();
+        } catch(Throwable e){
+            e.printStackTrace();
         } finally {
             session.close();
         }
         return results;
     }
 
-    public static <T> T getUnique(Criteria criteria) {
+    protected static <T extends Object> T find(int id, Class<T> searchingClass){
+        session = HibernateUtil.getSessionFactory().openSession();
         T result = null;
-        try {
-            transaction = session.beginTransaction();
-            result = (T) criteria.uniqueResult();
-            ;
-            transaction.commit();
-        } catch (HibernateException ex) {
-            transaction.rollback();
-            ex.printStackTrace();
-        } finally {
-            session.close();
-        }
-        return result;
-    }
 
-    public static <T> void deleteAll(Class classType) {
-        session = HibernateUtil.getSessionFactory().openSession();
         try {
-            transaction = session.beginTransaction();
-            Criteria cr = session.createCriteria(classType);
-            List<T> results = cr.list();
-            for (T result : results) {
-                session.delete(result);
-            }
-            transaction.commit();
-        } catch (HibernateException ex) {
-            transaction.rollback();
-            ex.printStackTrace();
-        } finally {
-            session.close();
-        }
-    }
-
-
-    public static void delete(Object object) {
-        session = HibernateUtil.getSessionFactory().openSession();
-        try {
-            transaction = session.beginTransaction();
-            session.delete(object);
-            transaction.commit();
-        } catch (HibernateException e) {
+            Criteria cr = session.createCriteria(searchingClass);
+            cr.add(Restrictions.eq("id", id));
+            result = (T) cr.uniqueResult();
+        } catch(Throwable e){
             transaction.rollback();
             e.printStackTrace();
         } finally {
             session.close();
         }
+
+        return result;
     }
 
-    public static <T> List<T> getAll(Class classType) {
+    protected static <T extends Object> List<T> orderByCriterion(String columnName, Class<T> searchingClass, boolean isAscending){
+        List<T> results = null;
         session = HibernateUtil.getSessionFactory().openSession();
-        Criteria cr = session.createCriteria(classType);
-        return getList(cr);
+        try{
+            Criteria cr = session.createCriteria(searchingClass);
+            if(isAscending){
+                cr.addOrder(Order.asc(columnName));
+            }else {
+                cr.addOrder(Order.desc(columnName));
+            }
+            results = cr.list();
+        }catch (Throwable e){
+            transaction.rollback();
+            e.printStackTrace();
+        }finally{
+            session.close();
+        }
+        return results;
     }
 
-    public static <T> T find(int id, Class classType) {
+    protected static <T extends Object> double getAverageQuantity(String columnName, Class<T> searchingClass){
+        Double average = null;
         session = HibernateUtil.getSessionFactory().openSession();
-        Criteria cr = session.createCriteria(classType);
-        cr.add(Restrictions.eq("id", id));
-        return getUnique(cr);
 
+        try{
+            transaction = session.beginTransaction();
+            Criteria cr = session.createCriteria(searchingClass);
+            cr.setProjection(Projections.avg(columnName));
+            average = (Double) cr.uniqueResult();
+        }catch (Throwable e){
+            transaction.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return average;
     }
 
-    public static Manager findManagerForDept(Department department) {
+    protected static <OBJECT extends IDB, ASSOCIATION> List<ASSOCIATION> getAssociationsForAnObject(OBJECT object, Class<ASSOCIATION> associationClass, String associationsRelationshipList){
+        List<ASSOCIATION> results = null;
         session = HibernateUtil.getSessionFactory().openSession();
-        Criteria cr = session.createCriteria(Manager.class);
-        cr.add(Restrictions.eq("department", department));
-        return (Manager) cr.uniqueResult();
+
+        try {
+            Criteria cr = session.createCriteria(associationClass);
+            cr.createAlias(associationsRelationshipList, "single_object");
+            cr.add(Restrictions.eq("single_object.id", object.getId()));
+            results = cr.list();
+        }catch (HibernateException e){
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return results;
     }
 }

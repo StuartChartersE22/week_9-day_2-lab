@@ -7,11 +7,13 @@
     #foreach ($department in $departments)
     <tr>
         <td> $department.getTitle()</td>
-        <td><a href="/departments/$department.getId()/edit">Edit</a></td>
         <td>
+            <a href="/departments/$department.getId()/edit">Edit</a>
             <form action="/departments/$department.getId()/delete" method="post">
                 <input type="submit" value="delete">
-            </form></td>
+            </form>
+            <a href="/department/$department.getId()">Details</a>
+        </td>
     </tr>
 
     #end

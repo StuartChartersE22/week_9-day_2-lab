@@ -1,10 +1,12 @@
 package models;
 
+import behaviours.IDB;
+
 import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Employee {
+public abstract class Employee implements IDB {
 
     private int id;
     private String firstName;

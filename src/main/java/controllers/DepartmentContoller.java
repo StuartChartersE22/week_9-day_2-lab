@@ -1,6 +1,7 @@
 package controllers;
 
 import db.DBHelper;
+import db.helpers.DBDepartment;
 import models.Department;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -20,7 +21,7 @@ public class DepartmentContoller {
     private void setupEndPoints(){
         get("/departments", (req, res) ->{
             Map<String, Object> model = new HashMap<>();
-            List<Department> departmentList = DBHelper.getAll(Department.class);
+            List<Department> departmentList = DBDepartment.getAll();
             model.put("departments", departmentList);
             model.put("template", "templates/departments/index.vtl");
             return  new ModelAndView(model, "templates/layout.vtl");
@@ -49,7 +50,7 @@ public class DepartmentContoller {
             model.put("template", "templates/departments/edit.vtl");
             String title = req.queryParams("title");
             int departmentId = Integer.parseInt(req.params(":id"));
-            Department department = DBHelper.find(departmentId, Department.class);
+            Department department = DBDepartment.find(departmentId);
             model.put("department", department);
             return new ModelAndView(model, "templates/layout.vtl");
 
@@ -67,12 +68,21 @@ public class DepartmentContoller {
 
         post("/departments/:id/delete", (req,res) -> {
             int departmentId = Integer.parseInt(req.params(":id"));
-            Department selectedDepartment = DBHelper.find(departmentId, Department.class);
+            Department selectedDepartment = DBDepartment.find(departmentId);
             DBHelper.delete(selectedDepartment);
             res.redirect("/departments");
             return null;
         }, new VelocityTemplateEngine());
 
+        get("/department/:id", (req,res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int departmentId = Integer.parseInt(req.params(":id"));
+            Department selectedDepartment = DBDepartment.find(departmentId);
+
+            model.put("department", selectedDepartment);
+            model.put("template", "templates/departments/show.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
 
     }
 }

@@ -2,6 +2,7 @@ package controllers;
 
 import db.DBHelper;
 import db.Seeds;
+import db.helpers.DBEmployee;
 import models.Employee;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -27,7 +28,7 @@ public class EmployeesController {
             Map<String, Object> model= new HashMap();
             model.put("template", "templates/employees/index.vtl");
 
-            List<Employee> employees = DBHelper.getAll(Employee.class);
+            List<Employee> employees = DBEmployee.getAll();
             model.put("employees", employees);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
