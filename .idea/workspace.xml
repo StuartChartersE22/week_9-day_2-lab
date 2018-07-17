@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8b5be87a-cf30-4ab0-8f6a-df04843fc51a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/EngineerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/engineers/create.vtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/engineers/edit.vtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/engineers/index.vtl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EmployeesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EmployeesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EngineerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EngineerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/engineers/create.vtl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/engineers/create.vtl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/engineers/index.vtl" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/engineers/index.vtl" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -22,8 +20,8 @@
       <file leaf-file-name="ManagersController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controllers/ManagersController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1337">
-              <caret line="107" column="20" selection-start-line="107" selection-start-column="20" selection-end-line="107" selection-end-column="20" />
+            <state relative-caret-position="176">
+              <caret line="36" selection-start-line="36" selection-end-line="37" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#88#89#0" expanded="true" />
@@ -36,8 +34,8 @@
       <file leaf-file-name="EngineerController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/controllers/EngineerController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
+            <state relative-caret-position="238">
+              <caret line="33" column="69" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#92#93#0" expanded="true" />
@@ -50,15 +48,28 @@
       <file leaf-file-name="index.vtl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/engineers/index.vtl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="12" lean-forward="true" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+            <state relative-caret-position="351">
+              <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="create.vtl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/engineers/create.vtl">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="12" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create.vtl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/managers/create.vtl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="21" selection-end-column="13" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="edit.vtl" pinned="false" current-in-tab="false">
@@ -69,8 +80,8 @@
       <file leaf-file-name="Engineer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/Engineer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="77" selection-start-line="14" selection-start-column="67" selection-end-line="14" selection-end-column="77" />
+            <state relative-caret-position="255">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -92,18 +103,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="202">
               <caret line="23" column="73" selection-start-line="23" selection-start-column="73" selection-end-line="23" selection-end-column="73" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Manager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/models/Manager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="19" column="53" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -152,9 +151,10 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/departments/edit.vtl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/departments/index.vtl" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/DepartmentContoller.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/EngineerController.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/EmployeesController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/engineers/index.vtl" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/engineers/create.vtl" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/EngineerController.java" />
       </list>
     </option>
   </component>
@@ -412,9 +412,9 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32827586" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32827586" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32965517" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32965517" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19386107" />
@@ -721,13 +721,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/managers/create.vtl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="37" lean-forward="true" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/managers/edit.vtl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -789,14 +782,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/ManagersController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/managers/index.vtl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1337">
-          <caret line="107" column="20" selection-start-line="107" selection-start-column="20" selection-end-line="107" selection-end-column="20" />
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="31" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/engineers/index.vtl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/engineers/edit.vtl">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/managers/create.vtl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/engineers/create.vtl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="12" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/Engineer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#88#89#0" expanded="true" />
-            <element signature="e#110#111#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -811,40 +833,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/engineers/create.vtl">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/Engineer.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/ManagersController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="77" selection-start-line="14" selection-start-column="67" selection-end-line="14" selection-end-column="77" />
+        <state relative-caret-position="176">
+          <caret line="36" selection-start-line="36" selection-end-line="37" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#88#89#0" expanded="true" />
+            <element signature="e#110#111#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/engineers/edit.vtl">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/managers/index.vtl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="31" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/engineers/index.vtl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="12" lean-forward="true" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controllers/EngineerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
+        <state relative-caret-position="238">
+          <caret line="33" column="69" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#92#93#0" expanded="true" />
