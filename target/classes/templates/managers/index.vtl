@@ -22,6 +22,10 @@
             <td>$manager.getSalary()</td>
             <td>$manager.getBudget()</td>
             <td><a href="/managers/$manager.getId()/edit">Edit</a></td>
+            <td><form action="/managers/$manager.getId()/delete" method="post">
+                <input type="submit" value="Delete">
+            </form></td>
+
         </tr>
         #end
     </table>

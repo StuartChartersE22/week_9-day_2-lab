@@ -99,6 +99,14 @@ public class ManagersController {
             return null;
         }, new VelocityTemplateEngine());
 
+        post("/managers/:id/delete", (req,res) -> {
+            int managerId = Integer.parseInt(req.params(":id"));
+            Manager selectedManager = DBHelper.find(managerId, Manager.class);
+            DBHelper.delete(selectedManager);
+            res.redirect("/managers");
+            return null;
+        }, new VelocityTemplateEngine());
+
     }
 
 
