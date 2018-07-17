@@ -20,6 +20,7 @@ public class EmployeesController {
         Seeds.seedData();
 
         ManagersController managersController = new ManagersController();
+        DepartmentContoller departmentContoller = new DepartmentContoller();
 
         get("/employees", (req, res) -> {
             Map<String, Object> model= new HashMap();
