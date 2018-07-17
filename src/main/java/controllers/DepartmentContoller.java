@@ -34,6 +34,14 @@ public class DepartmentContoller {
 
         }, new VelocityTemplateEngine());
 
+        post("/departments", (req, res) -> {
+            String title = req.queryParams("title");
+            Department department = new Department(title);
+            DBHelper.save(department);
+            res.redirect("/departments");
+            return null;
+        }, new VelocityTemplateEngine());
+
 
 
         get("/departments/:id/edit", (req, res) ->{
@@ -53,6 +61,14 @@ public class DepartmentContoller {
             int departmentId = Integer.parseInt(req.params(":id"));
             department.setId(departmentId);
             DBHelper.save(department);
+            res.redirect("/departments");
+            return null;
+        }, new VelocityTemplateEngine());
+
+        post("/departments/:id/delete", (req,res) -> {
+            int departmentId = Integer.parseInt(req.params(":id"));
+            Department selectedDepartment = DBHelper.find(departmentId, Department.class);
+            DBHelper.delete(selectedDepartment);
             res.redirect("/departments");
             return null;
         }, new VelocityTemplateEngine());
