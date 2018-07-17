@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "position")
 public abstract class Employee implements IDB {
 
     private int id;

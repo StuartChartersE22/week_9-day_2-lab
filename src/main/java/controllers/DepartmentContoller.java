@@ -3,6 +3,7 @@ package controllers;
 import db.DBHelper;
 import db.helpers.DBDepartment;
 import models.Department;
+import models.Employee;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -78,8 +79,9 @@ public class DepartmentContoller {
             Map<String, Object> model = new HashMap<>();
             int departmentId = Integer.parseInt(req.params(":id"));
             Department selectedDepartment = DBDepartment.find(departmentId);
-
+//            List<String[]> employees = DBDepartment.getEmployeesForDepartment(selectedDepartment);
             model.put("department", selectedDepartment);
+//            model.put("employees", employees);
             model.put("template", "templates/departments/show.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());

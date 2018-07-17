@@ -13,8 +13,8 @@ import java.util.List;
 
 public class DBHelper {
 
-    private static Session session;
-    private static Transaction transaction;
+    protected static Session session;
+    protected static Transaction transaction;
 
     public static void save(Object object){
         session = HibernateUtil.getSessionFactory().openSession();

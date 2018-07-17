@@ -29,6 +29,6 @@ public class Runner {
         DBHelper.save(engineer2);
 
         Engineer found = DBEngineer.find(engineer1.getId());
-        Manager foundManager = DBDepartment.getManagerForDepartment(department1).get(0);
+        Manager foundManager = DBDepartment.getManagersForDepartment(department1).get(0);
     }
 }
