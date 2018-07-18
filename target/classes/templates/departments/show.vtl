@@ -1,3 +1,8 @@
 <h1>Department: $department.getTitle()</h1>
 
 <label for="employees"><h2>Employees</h2></label>
+<ul id="employees">
+    #foreach($employee in $employees)
+        <li>$employee.getFirstName() $employee.getLastName(), as $employee.getClass().getCanonicalName()</li>
+    #end
+</ul>

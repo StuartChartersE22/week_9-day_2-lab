@@ -30,6 +30,10 @@ public class DBDepartment extends DBHelper {
         return getAssociationsForAnObject(department, Manager.class, "department");
     }
 
+    public static List<Employee> getEmployeesForDepartment(Department department){
+        return getAssociationsForAnObject(department, Employee.class, "department");
+    }
+
 //    public static List<String[]> getEmployeesForDepartment(Department department){
 //        List<String[]> results = null;
 //        session = HibernateUtil.getSessionFactory().openSession();
